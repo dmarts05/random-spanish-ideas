@@ -1,20 +1,21 @@
 import { MaskContainer } from "@/components/ui/svg-mask-effect";
 
-export function GenerateIdeaCard() {
+type GenerateIdeaCardProps = {
+  idea: string;
+};
+
+export function GenerateIdeaCard({ idea }: GenerateIdeaCardProps) {
   return (
-    <div className="h-[40rem] w-full flex items-center justify-center overflow-hidden">
+    <div className="flex items-center justify-center w-full max-w-5xl overflow-hidden h-96">
       <MaskContainer
         revealText={
-          <p className="max-w-4xl mx-auto text-4xl font-bold text-center text-slate-800">
-            The first rule of MRR Club is you do not talk about MRR Club. The
-            second rule of MRR Club is you DO NOT talk about MRR Club.
+          <p className="font-bold leading-loose text-center text-7xl text-slate-800">
+            ¡Revela el secreto!
           </p>
         }
-        className="h-[40rem] border rounded-md"
+        className="w-full h-full border rounded-md"
       >
-        The first rule of <span className="text-red-500">MRR Club</span> is you
-        do not talk about MRR Club. The second rule of MRR Club is you DO NOT
-        talk about <span className="text-red-500">MRR Club</span>.
+        <span className="text-7xl leading-loose text-[#3B82F6]">{idea}</span>
       </MaskContainer>
     </div>
   );

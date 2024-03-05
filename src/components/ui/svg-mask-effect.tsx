@@ -16,15 +16,23 @@ export const MaskContainer = ({
   className?: string;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [mousePosition, setMousePosition] = useState<any>({ x: null, y: null });
-  const containerRef = useRef<any>(null);
-  const updateMousePosition = (e: any) => {
-    const rect = containerRef.current.getBoundingClientRect();
-    setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  const [mousePosition, setMousePosition] = useState<{
+    x: number;
+    y: number;
+  }>({
+    x: 0,
+    y: 0,
+  });
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const updateMousePosition = (e: MouseEvent) => {
+    const rect = containerRef?.current?.getBoundingClientRect();
+    if (rect) {
+      setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    }
   };
 
   useEffect(() => {
-    containerRef.current.addEventListener("mousemove", updateMousePosition);
+    containerRef?.current?.addEventListener("mousemove", updateMousePosition);
     return () => {
       if (containerRef.current) {
         containerRef.current.removeEventListener(
@@ -34,14 +42,20 @@ export const MaskContainer = ({
       }
     };
   }, []);
-  let maskSize = isHovered ? revealSize : size;
+  const maskSize = isHovered ? revealSize : size;
 
   return (
     <motion.div
       ref={containerRef}
-      className={cn("h-screen relative", className)}
+      className={cn("h-screen relative cursor-pointer", className)}
       animate={{
         backgroundColor: isHovered ? "var(--slate-900)" : "var(--white)",
+      }}
+      onMouseEnter={() => {
+        setIsHovered(true);
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
       }}
     >
       <motion.div
@@ -54,16 +68,8 @@ export const MaskContainer = ({
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
       >
-        <div className="absolute inset-0 z-0 w-full h-full bg-black opacity-50" />
-        <div
-          onMouseEnter={() => {
-            setIsHovered(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovered(false);
-          }}
-          className="relative z-20 max-w-4xl mx-auto text-4xl font-bold text-center text-white"
-        >
+        <div className="absolute inset-0 z-0 w-full h-full opacity-50 bg-slate-950" />
+        <div className="relative z-20 max-w-4xl mx-auto text-4xl font-bold text-center text-white">
           {children}
         </div>
       </motion.div>
