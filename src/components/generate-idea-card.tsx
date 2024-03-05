@@ -15,7 +15,9 @@ export function GenerateIdeaCard({ idea }: GenerateIdeaCardProps) {
         }
         className="w-full h-full border rounded-md"
       >
-        <span className="text-7xl leading-normal text-[#3B82F6]">{idea}</span>
+        <span className="text-7xl leading-normal text-[#3B82F6] mx-8">
+          {idea}
+        </span>
       </MaskContainer>
     </div>
   );
