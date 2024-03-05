@@ -11,8 +11,7 @@ export function generateRandomVerb(): string {
 export function generateRandomSentence(): string {
   let noun1 = generateRandomNoun();
   noun1 = noun1.charAt(0).toUpperCase() + noun1.slice(1);
-  let noun2 = generateRandomNoun();
-  noun2 = noun2.charAt(0).toUpperCase() + noun2.slice(1);
+  const noun2 = generateRandomNoun();
   const verb = generateRandomVerb();
   return `${noun1} ${verb} ${noun2}`;
 }
