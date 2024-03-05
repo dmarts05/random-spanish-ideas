@@ -11,11 +11,11 @@ window.document.documentElement.classList.add("dark");
 // Create the router
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/random-spanish-ideas/",
     element: <HomePage />,
   },
   {
-    path: "/generate-idea",
+    path: "/random-spanish-ideas/generate-idea",
     element: <GenerateIdeaPage />,
   },
 ]);
