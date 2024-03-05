@@ -1,11 +1,7 @@
-import { nouns, adjectives, verbs } from "./spanish-dictionary";
+import { nouns, verbs } from "./spanish-dictionary";
 
 export function generateRandomNoun(): string {
   return nouns[Math.floor(Math.random() * nouns.length)];
-}
-
-export function generateRandomAdjective(): string {
-  return adjectives[Math.floor(Math.random() * adjectives.length)];
 }
 
 export function generateRandomVerb(): string {
@@ -13,9 +9,10 @@ export function generateRandomVerb(): string {
 }
 
 export function generateRandomSentence(): string {
-  let noun = generateRandomNoun();
-  noun = noun.charAt(0).toUpperCase() + noun.slice(1);
-  const adjective = generateRandomAdjective();
+  let noun1 = generateRandomNoun();
+  noun1 = noun1.charAt(0).toUpperCase() + noun1.slice(1);
+  let noun2 = generateRandomNoun();
+  noun2 = noun2.charAt(0).toUpperCase() + noun2.slice(1);
   const verb = generateRandomVerb();
-  return `${noun} ${adjective} ${verb}`;
+  return `${noun1} ${verb} ${noun2}`;
 }
