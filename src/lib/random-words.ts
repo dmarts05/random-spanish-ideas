@@ -17,5 +17,5 @@ export function generateRandomSentence(): string {
   noun = noun.charAt(0).toUpperCase() + noun.slice(1);
   const adjective = generateRandomAdjective();
   const verb = generateRandomVerb();
-  return `${noun} ${adjective} ${verb}.`;
+  return `${noun} ${adjective} ${verb}`;
 }
