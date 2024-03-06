@@ -930,7 +930,7 @@ export const verbs = [
   "abandonando",
   "dejando",
   "entrando",
-  "quedandose",
+  "quedándose",
   "saliendo",
   "atendiendo",
   "midiendo",

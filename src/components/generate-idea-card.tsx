@@ -45,15 +45,15 @@ export function GenerateIdeaCard() {
       >
         <MaskContainer
           revealText={
-            <p className="font-bold leading-normal text-center text-7xl text-slate-800">
+            <p className="text-4xl font-bold leading-normal text-center sm:text-5xl md:text-7xl text-slate-800">
               ¡Revela el secreto!
             </p>
           }
           className="w-full h-full border rounded-md"
         >
-          <span className="text-center text-7xl leading-normal text-[#3B82F6] mx-8">
+          <p className="text-4xl text-center sm:text-5xl md:text-7xl leading-normal text-[#3B82F6] mx-8">
             {idea}
-          </span>
+          </p>
         </MaskContainer>
       </motion.div>
       <Button
